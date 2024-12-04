@@ -10,7 +10,7 @@
 
 .slot-machine {
   display: flex;
-  /* gap: 10px; */
+  gap: 30px;
   /* margin-bottom: 20px; */
   position: absolute;
   top: 50%;
