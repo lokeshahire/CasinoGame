@@ -263,7 +263,7 @@
 
 .winning-row {
   animation: glow 2s infinite, bounce 1s ease-in-out infinite;
-  z-index: 2; /* Ensure it stays above other elements */
+  z-index: 2;
 }
 .blur-row {
   filter: blur(5px);
