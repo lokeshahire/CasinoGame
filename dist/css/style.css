@@ -40,6 +40,12 @@
   font-size: 24px;
   font-weight: bold;
 }
+
+/* @media (min-width: 1366px) and (min-height: 768px) {
+  .icons .innerDiv {
+    height: 190px;
+  }
+} */
 @media (max-width: 1920px) {
   .icons .innerDiv {
     height: 215px;
@@ -223,7 +229,7 @@
   animation: textZoom 1s forwards;
   background-color: black;
   padding: 20px;
-  margin-bottom: 30%;
+  margin-bottom: 40%;
 }
 
 @keyframes textZoom {
@@ -239,7 +245,7 @@
     transform: translateY(0) scale(1);
   }
 }
-/* Highlight Winning Row */
+
 @keyframes glow {
   0%,
   100% {
@@ -268,4 +274,16 @@
 .blur-row {
   filter: blur(5px);
   transition: filter 0.3s ease-in-out;
+}
+.spinning {
+  animation: spinimg 0.3s infinite linear;
+}
+
+@keyframes spinimg {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
 }

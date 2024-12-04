@@ -47,9 +47,16 @@ function resetWinningEffects() {
 }
 
 function spinReels() {
+  const spinImage = document.querySelector(".spinningimg");
+
   if (isSpinning) return;
   isSpinning = true;
   spinBtn.disabled = true;
+  spinImage.classList.add("spinning");
+  setTimeout(() => {
+    spinImage.classList.remove("spinning");
+  }, 500);
+
   resetWinningEffects();
 
   const results = [];
@@ -62,6 +69,9 @@ function spinReels() {
 
   let iconHeight;
 
+  // else if (screenWidth == 1366 && screenHeight == 768) {
+  //   iconHeight = 190;
+  // }
   if (screenWidth == 2560 && screenHeight == 1440) {
     iconHeight = 360;
   } else if (screenWidth == 1920 && screenHeight == 1080) {
