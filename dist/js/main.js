@@ -31,10 +31,26 @@ columns.forEach(populateReel);
 
 let isSpinning = false;
 
+function resetWinningEffects() {
+  const effects = document.querySelector(".effects");
+  const wonText = document.getElementById("wonText");
+
+  effects.style.visibility = "hidden";
+  wonText.style.transform = "scale(0)";
+
+  columns.forEach((column) => {
+    column.querySelectorAll(".innerDiv").forEach((icon) => {
+      icon.classList.remove("winning-row");
+      icon.classList.remove("blur-row");
+    });
+  });
+}
+
 function spinReels() {
   if (isSpinning) return;
   isSpinning = true;
   spinBtn.disabled = true;
+  resetWinningEffects();
 
   const results = [];
 
@@ -121,10 +137,14 @@ function checkResult(results) {
     const wonText = document.getElementById("wonText");
 
     columns.forEach((column) => {
-      const middleIcon =
-        column.querySelectorAll(".innerDiv")[Math.floor(icons.length / 2) + 2];
-      middleIcon.classList.add("winning-row");
-      console.log("middleIcons", middleIcon);
+      column.querySelectorAll(".innerDiv").forEach((icon, index) => {
+        const isMiddleRow = index === Math.floor(icons.length / 2) + 2;
+        if (isMiddleRow) {
+          icon.classList.add("winning-row");
+        } else {
+          icon.classList.add("blur-row");
+        }
+      });
     });
 
     effects.style.visibility = "visible";
@@ -135,13 +155,14 @@ function checkResult(results) {
       wonText.style.transform = "scale(0)";
 
       columns.forEach((column) => {
-        const middleIcon =
-          column.querySelectorAll(".innerDiv")[
-            Math.floor(icons.length / 2) + 2
-          ];
-        middleIcon.classList.remove("winning-row");
+        column.querySelectorAll(".innerDiv").forEach((icon) => {
+          icon.classList.remove("winning-row");
+          icon.classList.remove("blur-row");
+        });
       });
     }, 5000);
+  } else {
+    isSpinning = false;
   }
 }
 
