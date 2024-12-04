@@ -239,3 +239,29 @@
     transform: translateY(0) scale(1);
   }
 }
+/* Highlight Winning Row */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px orange, 0 0 40px red;
+  }
+  50% {
+    box-shadow: 0 0 20px orange, 0 0 30px yellow, 0 0 40px yellow,
+      0 0 50px orange;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+.winning-row {
+  animation: glow 2s infinite, bounce 1s ease-in-out infinite;
+  z-index: 2; /* Ensure it stays above other elements */
+}

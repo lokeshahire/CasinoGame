@@ -93,7 +93,7 @@ function spinReels() {
   columns.forEach((column, index) => {
     setTimeout(() => {
       column.style.animation = "";
-      //   const randomIndex = Math.floor(Math.random() * icons.length);
+      // const randomIndex = Math.floor(Math.random() * icons.length);
       var randomIndex = Math.floor(Math.random() * (icons.length * 2.5));
       randomIndex = Math.min(randomIndex, icons.length - 1);
 
@@ -120,12 +120,28 @@ function checkResult(results) {
     const effects = document.querySelector(".effects");
     const wonText = document.getElementById("wonText");
 
+    // Add winning-row class to middle row
+    columns.forEach((column) => {
+      const middleIcon =
+        column.querySelectorAll(".innerDiv")[Math.floor(icons.length / 2) + 2];
+      middleIcon.classList.add("winning-row");
+      console.log("middleIcons", middleIcon);
+    });
+
     effects.style.visibility = "visible";
     wonText.style.transform = "scale(1)";
 
     setTimeout(() => {
       effects.style.visibility = "hidden";
       wonText.style.transform = "scale(0)";
+
+      columns.forEach((column) => {
+        const middleIcon =
+          column.querySelectorAll(".innerDiv")[
+            Math.floor(icons.length / 2) + 2
+          ];
+        middleIcon.classList.remove("winning-row");
+      });
     }, 5000);
   }
 }
