@@ -120,7 +120,6 @@ function checkResult(results) {
     const effects = document.querySelector(".effects");
     const wonText = document.getElementById("wonText");
 
-    // Add winning-row class to middle row
     columns.forEach((column) => {
       const middleIcon =
         column.querySelectorAll(".innerDiv")[Math.floor(icons.length / 2) + 2];
