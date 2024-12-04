@@ -29,7 +29,13 @@ function populateReel(reel) {
 
 columns.forEach(populateReel);
 
+let isSpinning = false;
+
 function spinReels() {
+  if (isSpinning) return;
+  isSpinning = true;
+  spinBtn.disabled = true;
+
   const results = [];
 
   const reelHeight = document.querySelector(".reel").offsetHeight;
@@ -99,6 +105,10 @@ function spinReels() {
 
       if (index === columns.length - 1) {
         checkResult(results);
+        setTimeout(() => {
+          isSpinning = false;
+          spinBtn.disabled = false;
+        }, 500);
       }
     }, spinDuration + index * 800);
   });
